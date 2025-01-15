@@ -1,3 +1,3 @@
 # First look to Prisma ORM
 
-Reference : [YouTube Video](https://youtu.be/GReoWKUnwAg)
+Reference : [YouTube Video](_https://youtu.be/GReoWKUnwAg)

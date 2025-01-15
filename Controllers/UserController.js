@@ -1,5 +1,6 @@
 import prisma from "../DB/db.config.js";
 
+// Create a new user
 export const createUser = async (req, res) => {
 	const { name, email, password } = req.body;
 
@@ -28,6 +29,7 @@ export const createUser = async (req, res) => {
 	});
 };
 
+// Get all users
 export const getUsers = async (req, res) => {
 	const users = await prisma.user.findMany();
 
@@ -37,6 +39,7 @@ export const getUsers = async (req, res) => {
 	});
 };
 
+// Update a user
 export const updateUser = async (req, res) => {
 	const { id } = req.params;
 	const { name, email, password } = req.body;
@@ -59,6 +62,7 @@ export const updateUser = async (req, res) => {
 	});
 };
 
+// Get user by an ID
 export const getUserById = async (req, res) => {
 	const { id } = req.params;
 

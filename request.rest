@@ -3,17 +3,26 @@ GET http://localhost:3000
 
 ##### USER #####
 ### Create User
-POST http://localhost:3000/api/user
+POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Suwi Gautam",
-    "email": "sth1@example.com",
+    "name": "Suwi 3 Gautam",
+    "email": "sth2@example.com",
     "password": "pw"
 }
 
 ### Get All Users
-GET http://localhost:3000/api/user
+GET http://localhost:3000/api/users
 
 ### Get a User
-GET http://localhost:3000/api/user/1
+GET http://localhost:3000/api/users/1
+
+### Update a User
+PUT http://localhost:3000/api/users/3  
+Content-Type: application/json
+
+{
+    "name": "Suwi updated Gautam",
+    "password": "pw1"
+}
