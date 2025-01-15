@@ -33,7 +33,12 @@ export const createUser = async (req, res) => {
 export const getUsers = async (req, res) => {
 	const users = await prisma.user.findMany({
 		include: {
-			Post: true,
+			Post: {
+				select: {
+					title: true,
+					comment_count: true,
+				},
+			},
 		},
 	});
 
