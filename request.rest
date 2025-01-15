@@ -16,10 +16,10 @@ Content-Type: application/json
 GET http://localhost:3000/api/users
 
 ### Get a User
-GET http://localhost:3000/api/users/1
+GET http://localhost:3000/api/users/2
 
 ### Update a User
-PUT http://localhost:3000/api/users/3  
+PUT http://localhost:3000/api/users/2 
 Content-Type: application/json
 
 {
@@ -29,3 +29,49 @@ Content-Type: application/json
 
 ### Delete a User
 DELETE http://localhost:3000/api/users/3
+
+
+##### POST #####
+### Create a Post
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "title": "Post 2",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "user_id": 1
+}
+
+### Get All Posts
+GET http://localhost:3000/api/posts
+
+### Get a Post
+GET http://localhost:3000/api/posts/2
+
+### Update a Post
+PUT http://localhost:3000/api/posts/2
+Content-Type: application/json
+
+{
+    "title": "Post 2 updated",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Updated."
+}
+
+### Delete a Post
+DELETE http://localhost:3000/api/posts/4
+
+
+##### COMMENT #####
+### Create a Comment
+POST http://localhost:3000/api/comments
+Content-Type: application/json
+
+{
+    "comment": "Comment 1",
+    "post_id": 2,
+    "user_id": 1
+}
+
+
+### Get All Comments of a Post
+GET http://localhost:3000/api/posts/2/comments
