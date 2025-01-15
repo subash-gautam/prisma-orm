@@ -39,6 +39,22 @@ export const getUsers = async (req, res) => {
 	});
 };
 
+// Get user by an ID
+export const getUserById = async (req, res) => {
+	const { id } = req.params;
+
+	const user = await prisma.user.findUnique({
+		where: {
+			id: parseInt(id),
+		},
+	});
+
+	return res.json({
+		status: 200,
+		data: user,
+	});
+};
+
 // Update a user
 export const updateUser = async (req, res) => {
 	const { id } = req.params;
@@ -62,11 +78,11 @@ export const updateUser = async (req, res) => {
 	});
 };
 
-// Get user by an ID
-export const getUserById = async (req, res) => {
+// Delete a user
+export const deleteUser = async (req, res) => {
 	const { id } = req.params;
 
-	const user = await prisma.user.findUnique({
+	await prisma.user.delete({
 		where: {
 			id: parseInt(id),
 		},
@@ -74,6 +90,6 @@ export const getUserById = async (req, res) => {
 
 	return res.json({
 		status: 200,
-		data: user,
+		message: "User Deleted Successfully ..",
 	});
 };
