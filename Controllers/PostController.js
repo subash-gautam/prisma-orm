@@ -20,6 +20,8 @@ export const createPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
 	const posts = await prisma.post.findMany({
+		skip: 0,
+		take: 2,
 		include: {
 			_count: {
 				select: {
@@ -29,11 +31,6 @@ export const getPosts = async (req, res) => {
 		},
 		orderBy: {
 			created_at: "desc",
-		},
-		where: {
-			comment_count: {
-				gt: 0,
-			},
 		},
 	});
 
