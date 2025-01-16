@@ -18,15 +18,15 @@ model User {
   name       String?
   email      String    @unique
   password   String?
-  Post       Post[]
-  Comment    Comment[]
+  Posts      Post[]
+  Comments   Comment[]
   created_at DateTime  @default(now())
 }
 
 model Post {
   id            Int       @id @default(autoincrement())
   user          User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  comment       Comment[]
+  Comments      Comment[]
   user_id       Int
   title         String
   description   String

@@ -35,8 +35,8 @@ export const getUsers = async (req, res) => {
 		include: {
 			_count: {
 				select: {
-					Post: true,
-					Comment: true,
+					Posts: true,
+					Comments: true,
 				},
 			},
 		},
@@ -57,8 +57,8 @@ export const getUserById = async (req, res) => {
 			id: parseInt(id),
 		},
 		include: {
-			Post: true,
-			Comment: true,
+			Posts: true,
+			Comments: true,
 		},
 	});
 
@@ -94,6 +94,16 @@ export const updateUser = async (req, res) => {
 // Delete a user
 export const deleteUser = async (req, res) => {
 	const { id } = req.params;
+
+	const user = await prisma.user.findUnique({
+		where: {
+			id: parseInt(id),
+		},
+	});
+
+	if (!user) {
+		return res.status(400).json({ message: "User not found" });
+	}
 
 	await prisma.user.delete({
 		where: {

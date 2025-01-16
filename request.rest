@@ -7,8 +7,8 @@ POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-    "name": "Suwi 3 Gautam",
-    "email": "sth2@example.com",
+    "name": "Suwi 4 Gautam",
+    "email": "sth3@example.com",
     "password": "pw"
 }
 
@@ -37,7 +37,7 @@ POST http://localhost:3000/api/posts
 Content-Type: application/json
 
 {
-    "title": "Best Post",
+    "title": "Best Post 1",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "user_id": 1
 }
@@ -47,6 +47,9 @@ GET http://localhost:3000/api/posts
 
 ### Get a Post
 GET http://localhost:3000/api/posts/2
+
+### Get All Posts of a User
+GET http://localhost:3000/api/posts/user/2
 
 ### Update a Post
 PUT http://localhost:3000/api/posts/2
@@ -77,7 +80,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/comments/1
 
 ### Update a Comment
-PUT http://localhost:3000/api/comments/47da973b-4200-4692-b9c3-f5cb57041d5d
+PUT http://localhost:3000/api/comments/f7e46e68-9f56-4aaa-a68b-6076d64f58d9
 Content-Type: application/json
 
 {

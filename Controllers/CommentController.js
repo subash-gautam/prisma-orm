@@ -40,6 +40,19 @@ export const updateComment = async (req, res) => {
 	const { comment_id } = req.params;
 	const { comment } = req.body;
 
+	const existingComment = await prisma.comment.findUnique({
+		where: {
+			id: comment_id,
+		},
+	});
+
+	if (!existingComment) {
+		return res.status(404).json({
+			status: 404,
+			message: "Comment not found.",
+		});
+	}
+
 	const updatedComment = await prisma.comment.update({
 		where: {
 			id: comment_id,
@@ -59,6 +72,19 @@ export const updateComment = async (req, res) => {
 // Delete a comment.
 export const deleteComment = async (req, res) => {
 	const { comment_id } = req.params;
+
+	const existingComment = await prisma.comment.findUnique({
+		where: {
+			id: comment_id,
+		},
+	});
+
+	if (!existingComment) {
+		return res.status(404).json({
+			status: 404,
+			message: "Comment not found.",
+		});
+	}
 
 	const deletedComment = await prisma.comment.delete({
 		where: {
