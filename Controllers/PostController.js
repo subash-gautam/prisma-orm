@@ -27,6 +27,9 @@ export const getPosts = async (req, res) => {
 				},
 			},
 		},
+		orderBy: {
+			created_at: "desc",
+		},
 	});
 
 	return res.json({
@@ -56,20 +59,44 @@ export const getPostsByUser = async (req, res) => {
 export const getPostById = async (req, res) => {
 	const { id } = req.params;
 
-	const post = await prisma.post.findUnique({
-		where: {
-			id: parseInt(id),
-		},
-		include: {
-			Comments: true,
-		},
-	});
+	try {
+		const post = await prisma.post.findUnique({
+			where: {
+				id: parseInt(id),
+			},
+			include: {
+				Comments: {
+					include: {
+						user: {
+							select: {
+								name: true,
+								email: true,
+							},
+						},
+					},
+				},
+			},
+		});
 
-	return res.json({
-		status: 200,
-		data: post,
-		message: "Post fetched successfully.",
-	});
+		if (!post) {
+			return res.status(404).json({
+				status: 404,
+				message: "Post not found.",
+			});
+		}
+
+		return res.status(200).json({
+			status: 200,
+			data: post,
+			message: "Post fetched successfully.",
+		});
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({
+			status: 500,
+			message: "An error occurred while fetching the post.",
+		});
+	}
 };
 
 export const updatePost = async (req, res) => {
