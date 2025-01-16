@@ -9,8 +9,8 @@ import {
 const router = Router();
 
 router.post("/", createComment);
-router.get("/:id", getComments);
-router.put("/:id", updateComment);
-router.delete("/:id", deleteComment);
+router.get("/:post_id", getComments); // Ensure this matches the controller function
+router.put("/:comment_id", updateComment);
+router.delete("/:comment_id", deleteComment);
 
 export default router;

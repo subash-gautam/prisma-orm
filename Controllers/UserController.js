@@ -36,6 +36,7 @@ export const getUsers = async (req, res) => {
 			_count: {
 				select: {
 					Post: true,
+					Comment: true,
 				},
 			},
 		},
@@ -54,6 +55,10 @@ export const getUserById = async (req, res) => {
 	const user = await prisma.user.findUnique({
 		where: {
 			id: parseInt(id),
+		},
+		include: {
+			Post: true,
+			Comment: true,
 		},
 	});
 

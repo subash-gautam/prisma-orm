@@ -42,7 +42,7 @@ export const updateComment = async (req, res) => {
 
 	const updatedComment = await prisma.comment.update({
 		where: {
-			id: parseInt(comment_id),
+			id: comment_id,
 		},
 		data: {
 			comment,
@@ -62,7 +62,7 @@ export const deleteComment = async (req, res) => {
 
 	const deletedComment = await prisma.comment.delete({
 		where: {
-			id: parseInt(comment_id),
+			id: comment_id,
 		},
 	});
 
