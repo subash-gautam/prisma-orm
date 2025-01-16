@@ -11,6 +11,16 @@ export const createComment = async (req, res) => {
 		},
 	});
 
+	// Update the comment count of the related post
+	await prisma.post.update({
+		where: { id: post_id },
+		data: {
+			comment_count: {
+				increment: 1,
+			},
+		},
+	});
+
 	return res.json({
 		status: 200,
 		data: newComment,
@@ -89,6 +99,18 @@ export const deleteComment = async (req, res) => {
 	const deletedComment = await prisma.comment.delete({
 		where: {
 			id: comment_id,
+		},
+	});
+
+	// Decrease the comment counter
+	await prisma.post.update({
+		where: {
+			id: Number(post_id),
+		},
+		data: {
+			comment_count: {
+				decrement: 1,
+			},
 		},
 	});
 

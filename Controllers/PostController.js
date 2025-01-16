@@ -30,6 +30,11 @@ export const getPosts = async (req, res) => {
 		orderBy: {
 			created_at: "desc",
 		},
+		where: {
+			comment_count: {
+				gt: 0,
+			},
+		},
 	});
 
 	return res.json({
