@@ -6,12 +6,14 @@ import {
 	getPostById,
 	getPosts,
 	updatePost,
+	searchPost,
 } from "../Controllers/PostController.js";
 
 const router = Router();
 
 router.post("/", createPost);
 router.get("/", getPosts);
+router.get("/search", searchPost);
 router.get("/:id", getPostById);
 router.get("/user/:user_id", getPostsByUser);
 router.put("/:id", updatePost);

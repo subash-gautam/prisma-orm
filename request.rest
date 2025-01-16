@@ -37,8 +37,8 @@ POST http://localhost:3000/api/posts
 Content-Type: application/json
 
 {
-    "title": "Best Post 1",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "title": "Lorem Ipsum",
+    "description": "Hi there, this is a post. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
     "user_id": 1
 }
 
@@ -47,6 +47,9 @@ GET http://localhost:3000/api/posts
 
 ### Get a Post
 GET http://localhost:3000/api/posts/1
+
+### Search Posts
+GET http://localhost:3000/api/posts/search?q=Lorem  
 
 ### Get All Posts of a User
 GET http://localhost:3000/api/posts/user/2
