@@ -1,3 +1,4 @@
+import { skip } from "@prisma/client/runtime/library";
 import prisma from "../DB/db.config.js";
 
 export const createPost = async (req, res) => {
@@ -19,6 +20,18 @@ export const createPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
+	page = Number(req.query.page) || 1;
+	limit = Number(req.query.limit) || 3;
+
+	if (page <= 0) {
+		page = 1;
+	}
+	if (limit <= 0 || limit > 10) {
+		limit = 10;
+	}
+
+	skip = (page - 1) * limit;
+
 	const posts = await prisma.post.findMany({
 		skip: 0,
 		take: 2,
