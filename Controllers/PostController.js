@@ -47,10 +47,18 @@ export const getPosts = async (req, res) => {
 		},
 	});
 
+	const totalPosts = await prisma.post.count();
+	const totalPages = Math.ceil(totalPosts / limit);
+	const currentPage = page;
+	const limitPerPage = limit;
+
 	return res.json({
 		status: 200,
 		data: posts,
-		message: "All posts are fetched.",
+		totalPages,
+		currentPage,
+		limitPerPage,
+		message: `All posts from page ${currentPage} fetched successfully.`,
 	});
 };
 
