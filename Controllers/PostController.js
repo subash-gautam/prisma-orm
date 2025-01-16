@@ -159,9 +159,6 @@ export const searchPost = async (req, res) => {
 
 	const posts = await prisma.post.findMany({
 		where: {
-			title: {
-				search: query,
-			},
 			description: {
 				search: query,
 			},
