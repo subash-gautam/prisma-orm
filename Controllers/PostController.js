@@ -20,8 +20,8 @@ export const createPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
-	page = Number(req.query.page) || 1;
-	limit = Number(req.query.limit) || 3;
+	let page = Number(req.query.page) || 1;
+	let limit = Number(req.query.limit) || 3;
 
 	if (page <= 0) {
 		page = 1;
@@ -30,11 +30,11 @@ export const getPosts = async (req, res) => {
 		limit = 10;
 	}
 
-	skip = (page - 1) * limit;
+	const skip = (page - 1) * limit;
 
 	const posts = await prisma.post.findMany({
-		skip: 0,
-		take: 2,
+		skip,
+		take: limit,
 		include: {
 			_count: {
 				select: {
