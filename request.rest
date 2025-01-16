@@ -46,7 +46,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/posts
 
 ### Get All Posts with Pagination
-GET http://localhost:3000/api/posts?page=2&limit=3
+GET http://localhost:3000/api/posts?page=2&limit=2
 
 ### Get a Post
 GET http://localhost:3000/api/posts/1

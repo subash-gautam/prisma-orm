@@ -55,6 +55,7 @@ export const getPosts = async (req, res) => {
 	return res.json({
 		status: 200,
 		data: posts,
+		totalPosts,
 		totalPages,
 		currentPage,
 		limitPerPage,

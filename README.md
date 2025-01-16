@@ -1,3 +1,3 @@
 # First look to Prisma ORM
 
-Reference : [YouTube Video](https://youtu.be/GReoWKUnwAg)
+Reference: <a href="https://youtu.be/GReoWKUnwAg" target="_blank">YouTube video</a>
